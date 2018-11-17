@@ -1,0 +1,217 @@
+<div class="container-fluid" id="mainContent" style=" width: 100% !important;">
+  <div class="row">
+    <div class="col-12" id="imgHeader">
+      <img class="img" src="./../../assets/img/pic.jpg" class="img" alt="Responsive image;" style="max-width: 100%;">
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="row">
+
+    <div class="col-sm-1"></div>
+
+    <div class="col-xl-2 col-lg-2 col-offset-md-3 col-md-6">
+      <label class="label-size"> ISLAMABAD </label>
+    </div>
+
+    <div class="vertical-line"></div>
+
+    <div class="col-xl-2 col-lg-2 col-offset-md-3 col-md-6">
+      <label class="label-size"> KARACHI </label>
+    </div>
+    <div class="vertical-line"></div>
+
+    <div class="col-xl-2 col-lg-2 col-offset-md-3 col-md-6">
+      <label class="label-size"> LAHORE </label>
+    </div>
+    <div class="vertical-line"></div>
+
+    <div class="col-xl-2 col-lg-2 col-offset-md-3 col-md-6">
+      <label class="label-size"> FAISALABAD </label>
+    </div>
+
+    <div class="vertical-line"></div>
+
+    <div class="col-xl-2 col-lg-2 col-offset-md-3 col-md-6">
+      <label class="label-size"> RAWALPINDI </label>
+    </div>
+    <div class="vertical-line"></div>
+
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-auto"></div>
+
+    <div class="col-3">
+      <h2>BOOK NEW DELIVERY</h2>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-auto"></div>
+    <form [formGroup]="form" (ngSubmit)="submit(form)">
+      <div class="row">
+          <!--  -->
+          <span matPrefix style="position: relative; top: 14px; right: 10px !important;"><img src="https://www.countryflags.io/AE/shiny/32.png" alt="country">&nbsp;</span>
+        <mat-form-field>
+
+          <input matInput placeholder="From" [matAutocomplete]="auto" formControlName="from">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let state of filteredCities | async" [value]="state.name">
+              <span>{{state.name}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <span style="margin-left: 20px !important;"></span>
+        <span matPrefix style="position: relative; top: 14px; right: 10px !important;"><img src="https://www.countryflags.io/PK/shiny/32.png" alt="country">&nbsp;</span>
+        <mat-form-field>
+
+          <input matInput placeholder="Destination" [matAutocomplete]="auto1"   formControlName="destination">
+          <mat-autocomplete #auto1="matAutocomplete">
+            <mat-option *ngFor="let state of filteredCountries | async" [value]="state.name">
+              <!-- <img class="example-option-img" aria-hidden [src]="state.flag" height="25"> -->
+              <span>{{state.name}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="row">
+          <mat-form-field>
+
+              <input matInput placeholder="Weight" type="number" min="0" formControlName="weight">
+            </mat-form-field>
+            <span style="margin-left: 5px !important;"></span>
+            <mat-form-field >
+              <mat-select placeholder="How would you like it to be delivered?" formControlName="price" #price [disabled]=" form.value.price === '' " (selectionChange)="onSelect($event.value)">
+                  <mat-option *ngIf="form.value.price !== '' " value="Saver Starting at: {{form.value.price}}">Saver Starting at: {{form.value.price}}</mat-option>
+                  <mat-option *ngIf="form.value.price !== '' " value="Pickup Service at: {{form.value.price + pickup.charges}}">Pickup Service at: {{form.value.price + pickup.charges}}</mat-option>
+                  </mat-select>
+            </mat-form-field>
+      </div>
+      <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid || form.pristine" >Book Now</button>
+    </form>
+  </div>
+
+  <br>
+
+  <div class="row" style="position:relative;">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8" style="text-align: center !important;">
+      <p class="para">Book your order to Pakistan with Wing Delivery Partners.<br></p>
+        
+       <p class="para2"> To start, simply fill out “Book New Delivery” Below in 3 Simple steps to find your.</p>
+          
+          <p class="para"> pickup location > Select drop off location > Select Parcel weight</p>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  
+<hr>
+<br>
+<br>
+<br>
+
+<div>
+  <div class="row" style="position:relative; bottom: 50px">
+    <!-- <div class="col-sm-1"></div> -->
+    <div class="col-sm-4 text">
+        <label style="font-weight:500; font-size: 25px;">MOBILE</label>
+        <!-- <img src="./../../assets/img/mobile.png" style="height:60px; width:60px; position: relative; top:60px; right: 80px;"> -->
+    </div>
+    <div class="col-sm-4 text" >
+        <label style="font-weight:500; font-size: 25px;">RATES</label>
+     </div>
+     <div class="col-sm-4 text">
+        <label style="font-weight:500; font-size: 25px;">DOOR TO DOOR</label>
+     </div>
+  </div>
+
+  <div class="row" style="position:relative; bottom: 50px">
+     <!-- <div class="col-sm-1"></div> -->
+     <div class="col-sm-4 text">
+     <img src="./../../assets/img/mobile.png" style="height:60px; width:60px; position: relative; top:10px; ">
+    </div>
+
+    <div class="col-sm-4 text">
+        <img src="./../../assets/img/rates.png" style="height:60px; width:60px; position: relative; top:10px;">
+       </div>
+
+       <div class="col-sm-4 text">
+          <img src="./../../assets/img/door.png" style="height:60px; width:60px; position: relative; top:10px; ">
+         </div>
+  </div>
+
+  <div class="row" style="position:relative; bottom: 50px">
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-4 text">
+         <p class="description">Use your phone or tablet to book orders on the go</p>
+         </div>
+
+      <div class="col-sm-4 text">
+         <p class="description">Use your phone or tablet to book orders on the go</p>
+        </div>
+          
+         <div class="col-sm-4 text">
+                <p class="description1">Use your phone or tablet to book orders on the go</p>
+            </div>
+    </div>
+  
+  </div><br><br>
+
+  <div>
+    <div class="row">
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-4 text">
+          <label style="font-weight:500; font-size: 25px; position: relative;">CASH ON DELIVERY</label>
+          <!-- <img src="./../../assets/img/mobile.png" style="height:60px; width:60px; position: relative; top:60px; right: 80px;"> -->
+      </div>
+      <div class="col-sm-4 text">
+          <label style="font-weight:500; font-size: 25px; position: relative;">DELIVERY TIME</label>
+       </div>
+       <div class="col-sm-4 text">
+          <label style="font-weight:500; font-size: 25px; position: relative;">TRACKING</label>
+       </div>
+    </div>
+
+    <div class="row">
+       <!-- <div class="col-sm-1"></div> -->
+       <div class="col-sm-4 text">
+       <img src="./../../assets/img/cash.png" style="height:60px; width:60px; position: relative; top:10px; ">
+      </div>
+
+      <div class="col-sm-4 text">
+          <img src="./../../assets/img/delivery.png" style="height:60px; width:60px; position: relative; top:10px; ">
+         </div>
+
+         <div class="col-sm-4 text">
+            <img src="./../../assets/img/tracking.png" style="height:60px; width:60px; position: relative; top:10px; ">
+           </div>
+    </div>
+
+    <div class="row">
+        <!-- <div class="col-sm-1"></div> -->
+        <div class="col-sm-4 text">
+           <p class="description">Use your phone or tablet to book orders on the go</p>
+           </div>
+
+        <div class="col-sm-4 text">
+           <p class="description">Use your phone or tablet to book orders on the go</p>
+          </div>
+            
+           <div class="col-sm-4 text">
+                  <p class="description1">Use your phone or tablet to book orders on the go</p>
+              </div>
+      </div>
+    
+    </div>
+
+    <br>
+    <br>
+    <br>
+    
+
+
+</div>

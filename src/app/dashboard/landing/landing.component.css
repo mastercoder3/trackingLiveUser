@@ -1,0 +1,37 @@
+.label-size{
+    font-size: 32px !important;
+    color: black;
+}
+
+
+#imgHeader{
+  width: 100% !important;
+}
+
+#imgHeader > img{
+    width: 100%;
+}
+
+div.vertical-line{
+    width: 1px; /* Line width */
+    background-color: rgb(240, 222, 59);
+    height: 40%; 
+    float: left; 
+  }
+
+  .para{
+    font-weight: 400;
+    font-size:17px;
+    text-align: center;
+    position: relative;
+    font-family:monospace !important;
+
+  }
+  .para2{
+    font-family:monospace !important;
+    font-weight: 400;
+    font-size:17px;
+    padding-left: 20px !important;
+    text-align: center;
+    position: relative;
+  }

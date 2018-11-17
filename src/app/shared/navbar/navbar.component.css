@@ -1,0 +1,9 @@
+#navbar{
+    position: relative;
+    top: -24px !important;
+    max-height: 80px !important;
+    /* background-color: rgba(255, 255, 255, 0.) !important; */
+    /* background-color: hsla(0,0%,100%,.9); */
+    background-color: rgba(214, 213, 213, 0.328) !important;
+    color: black;
+}
