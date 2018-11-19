@@ -29,4 +29,25 @@ export class HelperService {
     return Observable.throw(error.message || error);
     }
 
+  getCountryPhoneCodes(){
+    let myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');    
+       let options = new RequestOptions({ headers: myHeaders });
+    return this.http.get('./assets/data/phonecode.json',options)
+    .pipe(map((this.extractData)))
+  }
+
+  simpleHttp(amount, token){
+    let myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: myHeaders });
+
+    //callrequest
+    return this.http.post('http://localhost:3000/payments', {
+     amount: amount.toString(),
+     token: token
+    }, options);
+
+  }
+
 }

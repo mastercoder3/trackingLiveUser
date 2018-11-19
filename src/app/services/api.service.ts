@@ -69,6 +69,18 @@ export class ApiService {
     return this.afs.collection('orders', ref=> ref.where('userId', '==', uid)).snapshotChanges();
   }
 
+  getBoxes(){
+    return this.afs.collection('box').valueChanges();
+  }
+
+  getNewOrders(){
+    return this.afs.collection('neworders').valueChanges();
+  }
+  
+  createOrder(data){
+    return this.afs.collection('neworders').add(data);
+  }
+
 
 
 

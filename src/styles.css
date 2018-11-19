@@ -1,2 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* .cdk-overlay-container{
+    overflow-y: scroll !important;
+} */
+
+/* html.cdk-global-scrollblock {
+    width: initial;
+    position: initial;
+    overflow-y: scroll;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+body.modal-open .cdk-global-overlay-wrapper {
+    pointer-events: all;
+    display: block !important;
+    overflow: auto;
+    padding: 30px 0;
+    position: fixed;
+}
+
+body.modal-open .cdk-overlay-pane {
+    position: relative !important;
+    margin: auto !important;
+}
+
+.cdk-overlay-backdrop {
+    position: fixed !important;
+}
+
+.mat-dialog-container {
+    margin: 0 auto 30px !important;
+    height: auto !important;
+    overflow: initial !important;
+}
+
+.mat-dialog-content {
+    max-width: none !important;
+    max-height: none !important;
+    overflow: initial !important;
+} */
