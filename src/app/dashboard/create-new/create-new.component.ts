@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
 import { HelperService } from 'src/app/services/helper.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-new',
@@ -15,7 +16,8 @@ export class CreateNewComponent implements OnInit {
   order;
   par;
   phonecode;
-  constructor(private dialog: MatDialog,private helper: HelperService) { }
+  constructor(private dialog: MatDialog,private helper: HelperService, private router: Router) {
+   }
 
   ngOnInit() {
     this.order = JSON.parse(localStorage.getItem('booking'));
@@ -47,8 +49,9 @@ export class CreateNewComponent implements OnInit {
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed:');
-      console.log(result);
+      if(result === undefined){
+        this.router.navigate(['/orders']);
+      }
     });
   }
 

@@ -57,7 +57,6 @@ export class LandingComponent implements OnInit {
   form: FormGroup;
 
   constructor(private helper: HelperService, private fb: FormBuilder, private api: ApiService, private router: Router) { 
-    localStorage.removeItem('uid');
     this.filteredCities = this.stateCtrl.valueChanges
     .pipe(
       startWith(''),

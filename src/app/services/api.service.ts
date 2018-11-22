@@ -81,6 +81,26 @@ export class ApiService {
     return this.afs.collection('neworders').add(data);
   }
 
+  getNewOrdersById(id){
+    return this.afs.collection('neworders', ref => ref.where('userid','==',id)).valueChanges();
+  }
+
+  getOrdersById(id){
+    return this.afs.collection('orders', ref=> ref.where('userid','==',id)).valueChanges()
+  }
+
+  getNewOrderByOrderId(id){
+    return this.afs.collection('neworders', ref => ref.where('orderid','==',id)).valueChanges();
+  }
+
+  getOrderByOrderId(id){
+    return this.afs.collection('orders', ref => ref.where('orderid','==',id)).valueChanges();
+  }
+
+  getTrackingInformation(id){
+    return this.afs.doc('tracking/'+id).valueChanges();
+  }
+
 
 
 

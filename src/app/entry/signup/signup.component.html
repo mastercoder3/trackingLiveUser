@@ -2,7 +2,7 @@
   <img class="card-img-top" src="./../../assets/img/logo.png" alt="Card image cap" style="max-width: 120px !important; margin: 0 auto;">
   <div class="card-body">
     <div class="container-fluid">
-        <form [formGroup]="form" >
+        <form [formGroup]="form" (ngSubmit)="submit(form)" >
             <mat-form-field style="width: 100%">
                 <input matInput placeholder="First Name" type="text" formControlName="fname">
               </mat-form-field>
@@ -21,7 +21,7 @@
           <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid || form.pristine" style="width: 100%" >Sign Up</button>
         </form>
         <br>
-        <span style="text-align: center"><a  (click)="signin()" >SIGN In</a></span>
+        <span style="text-align: center"><a  routerLink="/signin">SIGN IN</a></span>
     </div>
   </div>
 </div>

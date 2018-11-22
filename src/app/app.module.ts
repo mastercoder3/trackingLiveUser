@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {AgmCoreModule} from '@agm/core';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 // FireBase
 import { AngularFireModule } from '@angular/fire';
@@ -23,7 +24,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatGridListModule} from '@angular/material/grid-list';
-  
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 import { AppComponent } from './app.component';
@@ -34,6 +35,8 @@ import { LoginComponent } from './entry/login/login.component';
 import { SignupComponent } from './entry/signup/signup.component';
 import { CreateDialogComponent } from './dashboard/create-dialog/create-dialog.component';
 import { SpinnerComponent } from './ui/spinner/spinner.component';
+import { OrdersComponent } from './dashboard/orders/orders.component';
+import { TrackingComponent } from './dashboard/tracking/tracking.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { SpinnerComponent } from './ui/spinner/spinner.component';
     LoginComponent,
     SignupComponent,
     CreateDialogComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    OrdersComponent,
+    TrackingComponent
     ],
   imports: [
     BrowserModule,
@@ -57,7 +62,9 @@ import { SpinnerComponent } from './ui/spinner/spinner.component';
     MatIconModule,
     MatCheckboxModule,
     MatGridListModule,
+    MatSnackBarModule,
     FormsModule,
+    FilterPipeModule,
     ReactiveFormsModule,
     HttpModule,
     AgmCoreModule.forRoot({
@@ -72,7 +79,9 @@ import { SpinnerComponent } from './ui/spinner/spinner.component';
     {path: '', component: LandingComponent},
     {path: 'signin', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
-    {path: 'create-new', component: CreateNewComponent}
+    {path: 'create-new', component: CreateNewComponent},
+    {path: 'orders', component: OrdersComponent},
+    {path: 'tracking', component: TrackingComponent}
     ])
   ],
   providers: [],

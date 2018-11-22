@@ -1,0 +1,13 @@
+
+#search{
+    border-width:0px;
+    border:none;
+    outline: 0 !important;
+}
+
+#search:focus{
+    outline: 0px !important;
+    -webkit-appearance:none !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+}

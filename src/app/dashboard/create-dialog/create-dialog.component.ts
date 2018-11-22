@@ -13,7 +13,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { HelperService } from 'src/app/services/helper.service';
 import * as global from '../../../global';
 import {environment} from '../../../environments/environment'
-
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 
 export interface DialogData {
   animal: string;
@@ -73,7 +73,7 @@ export class CreateDialogComponent implements OnInit {
     private fb: FormBuilder,
     private api: ApiService, private helper: HelperService,
         private dialogRef: MatDialogRef<CreateDialogComponent>,
-        @Inject(MAT_DIALOG_DATA)  public data: DialogData
+        @Inject(MAT_DIALOG_DATA)  public data: DialogData, public snackBar: MatSnackBar
   ) { 
     // this.description = data.description;
     this.order = JSON.parse(localStorage.getItem('booking'));
@@ -82,9 +82,7 @@ export class CreateDialogComponent implements OnInit {
   ngOnInit() {
     this.showForm = true;
     // this.showSpinner = true;
-  
     this.setStripes();
-
     this.form = this.fb.group({
       sendername: ['', Validators.required],
       country: ['United Arab Emirates', Validators.required],
@@ -373,13 +371,13 @@ export class CreateDialogComponent implements OnInit {
           this.id = `${code}001`;
         }
         else if(order.length < 10){
-          this.id = `${code}00${order.length}`;
+          this.id = `${code}00${order.length+1}`;
         }
         else if(order.length < 100){
-          this.id = `${code}0${order.length}`;
+          this.id = `${code}0${order.length+1}`;
         }
         else if(order.length < 1000){
-          this.id = `${code}${order.length}`;
+          this.id = `${code}${order.length+1}`;
         }
         //Weight
         if(weight < 10){
@@ -425,15 +423,29 @@ export class CreateDialogComponent implements OnInit {
       token: token =>{
         this.helper.simpleHttp(this.newOrder.total* 100, token)
           .subscribe( res => {
-            if(res.status === 20){
-              console.log('successfull')
+            if(res.status === 200){
+              this.openSnackbar('Payment Accepted');
+                  this.api.createOrder(this.newOrder)
+                  .then(res => {
+                    this.close();
+                    localStorage.removeItem('booking');
+                  }, err =>{
+                    console.log(err);
+                  });
             }
             else{
-              console.log('failed')
+              this.openSnackbar('Payment Rejected.');
             }
           })
       }
     });
+  }
+
+  openSnackbar(msg){
+    let config = new MatSnackBarConfig();
+    config.duration = 5000;
+    config.panelClass = ['red-snackbar']
+    this.snackBar.open(msg, 'Dismiss', config);
   }
 
 

@@ -32,7 +32,10 @@ export class LoginComponent implements OnInit {
         .subscribe(data =>{
             if(data){
               localStorage.setItem('tuid', res.user.uid);
-              this.router.navigate(['create-new']);
+              if(localStorage.getItem('booking'))
+                this.router.navigate(['/create-new'])
+              else
+                this.router.navigate(['']).then(res => { location.reload(); })  
             }
            });
       });     
