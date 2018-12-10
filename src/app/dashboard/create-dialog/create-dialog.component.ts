@@ -147,35 +147,23 @@ export class CreateDialogComponent implements OnInit {
 
   onChanges(){
     this.form2.get('length').valueChanges.subscribe( res => {
-      let length = this.form2.value.length;
-      let width = this.form2.value.width;
-      let height = this.form2.value.height;
-      let w = (length*width*height)/5000;
-      this.form2.get('chargableweight').setValue((w > this.form2.value.actualweight) ? w : this.form2.value.actualweight);
+      this.setChargableWeight()
+
     });
     this.form2.get('width').valueChanges.subscribe( res => {
-      let length = this.form2.value.length;
-      let width = this.form2.value.width;
-      let height = this.form2.value.height;
-      let w = (length*width*height)/5000;
-      this.form2.get('chargableweight').setValue((w > this.form2.value.actualweight) ? w : this.form2.value.actualweight);
+      this.setChargableWeight()
+
 
     });
     this.form2.get('height').valueChanges.subscribe( res => {
-      let length = this.form2.value.length;
-      let width = this.form2.value.width;
-      let height = this.form2.value.height;
-      let w = (length*width*height)/5000;
-      this.form2.get('chargableweight').setValue((w > this.form2.value.actualweight) ? w : this.form2.value.actualweight);
+      this.setChargableWeight()
+
 
     });
     this.form2.get('actualweight').valueChanges.subscribe(res =>{
       if(this.form2.value.actualweight < this.form2.value.chargableweight){
-      let length = this.form2.value.length;
-      let width = this.form2.value.width;
-      let height = this.form2.value.height;
-      let w = (length*width*height)/5000;
-      this.form2.get('chargableweight').setValue((w > this.form2.value.actualweight) ? w : this.form2.value.actualweight);
+        this.setChargableWeight()
+
       }
       else
         this.form2.get('chargableweight').setValue((this.form2.value.chargableweight > this.form2.value.actualweight) ? this.form2.value.chargableweight : this.form2.value.actualweight);
@@ -306,6 +294,14 @@ export class CreateDialogComponent implements OnInit {
 
   }
 
+  setChargableWeight(){
+    let length = this.form2.value.length;
+      let width = this.form2.value.width;
+      let height = this.form2.value.height;
+      let w = (length*width*height)/5000;
+      this.form2.get('chargableweight').setValue((w > this.form2.value.actualweight) ? w : this.form2.value.actualweight);
+  }
+
   nextBox(){
     if(this.current+1 <= this.box.length-1){
       this.selected = this.box[this.current+1];
@@ -316,6 +312,7 @@ export class CreateDialogComponent implements OnInit {
       // this.form2.value.length = this.selected.length;
       // this.form2.value.width = this.selected.width;
       // this.form2.value.height = this.selected.height;
+      this.setChargableWeight()
     }
     else if(this.current+1 === this.box.length){
       this.selected = this.box[0];
@@ -323,6 +320,8 @@ export class CreateDialogComponent implements OnInit {
       this.form2.controls['length'].setValue(this.selected.length);
       this.form2.controls['width'].setValue(this.selected.width);
       this.form2.controls['height'].setValue(this.selected.height);
+      this.setChargableWeight()
+
     }
   }
 
@@ -333,6 +332,8 @@ export class CreateDialogComponent implements OnInit {
       this.form2.controls['length'].setValue(this.selected.length);
       this.form2.controls['width'].setValue(this.selected.width);
       this.form2.controls['height'].setValue(this.selected.height);
+      this.setChargableWeight()
+
     }
     else if(this.current-1 === -1){
       this.current = this.box.length -1;
@@ -340,6 +341,8 @@ export class CreateDialogComponent implements OnInit {
       this.form2.controls['length'].setValue(this.selected.length);
       this.form2.controls['width'].setValue(this.selected.width);
       this.form2.controls['height'].setValue(this.selected.height);
+      this.setChargableWeight()
+
     }
   }
 

@@ -22,6 +22,7 @@ export class LandingComponent implements OnInit {
   prices;
   rates;
   pickup;
+  countryCode;
   states = [
     {
       name:  "Abu Dhabi"
@@ -108,6 +109,9 @@ export class LandingComponent implements OnInit {
 
 onChanges(){
   this.form.get('destination').valueChanges.subscribe(res =>{
+    let x = this.countries.filter(data => data.name === res);
+    if(x.length !== 0)
+      this.countryCode = x[0].code;
     if(res !== '' ){
       this.form.get('weight').valueChanges.subscribe(weigh => {
         if(weigh != 0){
@@ -116,6 +120,7 @@ onChanges(){
       });
     }
   });
+
 }
 
 getPrices(dest){
