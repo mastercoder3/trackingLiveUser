@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,19 +9,32 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  uid;
+  uid=false;
 
-  constructor(private router: Router) {
-    this.uid = localStorage.getItem('tuid')
+  constructor(private router: Router, private auth: AuthService) {
+    this.loggedIn();
    }
 
   ngOnInit() {
   }
 
+  
+  loggedIn(){
+    this.auth.checkLoginStatus().subscribe(user =>{
+      if(user){
+        this.uid = true;
+      }
+      else{
+        this.uid = false;
+      }
+    })
+  }
+
   signout(){
     localStorage.removeItem('tuid')
     localStorage.removeItem('booking')
-    this.router.navigate(['']);
+    this.auth.logout();
+    // this.router.navigate(['']);
   }
 
 }

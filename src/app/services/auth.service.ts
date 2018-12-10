@@ -29,4 +29,13 @@ export class AuthService {
   forgotPassword(email){
     return this.auth.auth.sendPasswordResetEmail(email);
   }
+
+  logout(){
+    this.auth.auth.signOut();
+  }
+
+  checkLoginStatus(){
+    return this.auth.authState;
+  }
+  
 }

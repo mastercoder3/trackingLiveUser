@@ -37,6 +37,7 @@ import { CreateDialogComponent } from './dashboard/create-dialog/create-dialog.c
 import { SpinnerComponent } from './ui/spinner/spinner.component';
 import { OrdersComponent } from './dashboard/orders/orders.component';
 import { TrackingComponent } from './dashboard/tracking/tracking.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { TrackingComponent } from './dashboard/tracking/tracking.component';
     CreateDialogComponent,
     SpinnerComponent,
     OrdersComponent,
-    TrackingComponent
+    TrackingComponent,
+    FooterComponent
     ],
   imports: [
     BrowserModule,

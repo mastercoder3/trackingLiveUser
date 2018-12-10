@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
               if(localStorage.getItem('booking'))
                 this.router.navigate(['/create-new'])
               else
-                this.router.navigate(['']).then(res => { location.reload(); })  
+                this.router.navigate(['']);
             }
            });
       });     

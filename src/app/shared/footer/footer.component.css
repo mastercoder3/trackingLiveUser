@@ -1,0 +1,21 @@
+.page-footer{
+    background-color: black !important;
+}
+.link{
+    background-color: white !important;
+}
+.list-unstyled{
+    color: white !important;
+}
+.btn-floating{
+    color: white !important;
+}
+.icon{
+    font-size: 50px !important;
+}
+a:hover {
+    color: yellow !important;
+}
+.ah:hover{
+    color: yellow !important;
+}

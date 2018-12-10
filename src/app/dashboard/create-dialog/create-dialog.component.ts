@@ -356,6 +356,7 @@ export class CreateDialogComponent implements OnInit {
   id: string = '';
 
   generateId(country,weight){
+    weight = Math.round(weight);
     this.helper.getCountries()
       .subscribe(res =>{
         let count = res;
@@ -380,6 +381,7 @@ export class CreateDialogComponent implements OnInit {
           this.id = `${code}${order.length+1}`;
         }
         //Weight
+
         if(weight < 10){
           this.id = `${this.id}0${weight}`;
         }
